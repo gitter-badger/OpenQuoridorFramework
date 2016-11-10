@@ -1,9 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 using Lib.Wpf.Commands;
 using OQF.Application.Tournament.Services;
+using OQF.Bot.Contracts;
 
 namespace OQF.Application.Tournament.ViewModels
 {
@@ -18,7 +20,7 @@ namespace OQF.Application.Tournament.ViewModels
             TournamentBots.Add(new BotData {Name = "Bot1"});
             TournamentBots.Add(new BotData {Name = "Bot2"});
 
-            StartTournament = new Command(() => service.StartTournament(TournamentBots.ToList()));
+            StartTournament = new Command(() => service.StartTournament(TournamentBots.ToList(), new GameConstraints(TimeSpan.FromSeconds(60), 100)));
         }
 
         public ICommand StartTournament { get; }

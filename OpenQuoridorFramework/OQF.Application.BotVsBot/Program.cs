@@ -15,8 +15,8 @@ namespace OQF.Application.BotVsBot
 {
     class Program
     {
-        private IQuoridorBot bottomBot;
-        private IQuoridorBot topBot;
+        private Tuple<IQuoridorBot,string> bottomBot;
+        private Tuple<IQuoridorBot,string> topBot;
 
         static void Main(string[] args)
         {
